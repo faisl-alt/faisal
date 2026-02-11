@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>لينك خاص بيكي ❤️</title>
+<style>
+body{
+  font-family: Arial;
+  text-align:center;
+  background:#ffe6f0;
+  padding-top:50px;
+  overflow-x:hidden;
+}
+input,button{
+  padding:10px 20px;
+  font-size:20px;
+  margin:10px;
+}
+#no{
+  position:absolute;
+}
+.hidden{display:none;}
+.confetti{
+  position:fixed;
+  font-size:30px;
+  animation: float 3s infinite;
+}
+@keyframes float{
+  0%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-100px) rotate(180deg)}
+  100%{transform:translateY(0) rotate(360deg)}
+}
+.heart{
+  position:fixed;
+  font-size:40px;
+  animation: floatHeart 3s infinite;
+}
+@keyframes floatHeart{
+  0%{top:100%;opacity:1;transform:translateX(0);}
+  100%{top:-10%;opacity:0;transform:translateX(200px);}
+}
+a{
+  cursor:pointer;
+  color:#ff0066;
+  font-size:22px;
+  display:block;
+  margin-top:20px;
+  text-decoration:none;
+}
+a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body>
+
+<!-- Loading -->
+<div id="loading">
+  <h1>جاري التحقق من المشاعر... 99% 😅</h1>
+</div>
+
+<!-- Login -->
+<div id="login" class="hidden">
+  <h1>لينك خاص بيكي 👀</h1>
+  <input id="user" placeholder="Username"><br>
+  <input id="pass" type="password" placeholder="Password"><br>
+  <button onclick="checkLogin()">دخول</button>
+</div>
+
+<!-- Countdown -->
+<div id="countdown" class="hidden">
+  <h1 id="count">3</h1>
+</div>
+
+<!-- Question -->
+<div id="question" class="hidden">
+  <h1>يا لولتي… بتحبيني ولا لأ؟ 💔</h1>
+  <button onclick="yes()">آه ❤️</button>
+  <button id="no" onmouseover="moveNo()">لأ 💀</button>
+</div>
+
+<!-- Cat (No GIF after 3 tries) -->
+<div id="cat" class="hidden">
+  <h1>قولي آه أحسنلك 😈🔫</h1>
+  <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdjV1M3NvcmM1bnJsYWlydGtid3pxaTFpa3M3aXg2bGY5ZHJtdGwyMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/901mxGLGQN2PyCQpoc/giphy.gif" width="300" style="margin:auto;display:block;">
+</div>
+
+<!-- Celebration -->
+<div id="celebration" class="hidden">
+  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWI3OHpsbTc4Nzg0MHFwbmh2NXVzemtnM2l3YjI5MjZubG5sNWFyYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0MYt5jPR6QX5pnqM/giphy.gif" width="350" style="margin:auto;display:block;"><br>
+  <h1>كنت عارف إنك هتختاري آه من الأول 😍</h1>
+  <p style="font-size:24px">
+      وانا كمان بحبك علفكرة بحبك بهبلك وعبطك وعنادك وعصبيتك❤️<br>
+  </p>
+  <a onclick="showRamadan()">انتي فاكره إن احنا كده خلصنا؟ دوسي هنا…</a>
+</div>
+
+<!-- Ramadan -->
+<div id="ramadan" class="hidden">
+  <h1>رمضان كريم 🌙</h1>
+  <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2pwcDY2dWZvb25oemRnazZ1ZXlhYWhoeGd0eGdjOGcwd3E0dDA1byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TNwY5Ypwik1iO4Fa1q/giphy.gif" width="250" style="margin:auto;display:block;"><br>
+  <p style="font-size:26px">
+    كل سنة وانتي طيبة يا حبيبتي ❤️<br>
+    وسنة سعيدة عليكي<br>
+    ورمضان الجاي تكوني في بيتي منورة حياتي 🏡✨
+  </p>
+  <button onclick="openWhats()">دوسي هنا علشان تردي عليا بقى 💬❤️</button>
+</div>
+
+<script>
+let noCount = 0;
+
+// Loading
+setTimeout(()=>{
+  document.getElementById("loading").classList.add("hidden");
+  document.getElementById("login").classList.remove("hidden");
+},2000);
+
+// Login
+function checkLogin(){
+  let u = document.getElementById("user").value;
+  let p = document.getElementById("pass").value;
+  if(u=="لولتي" && p=="13-8-2003"){
+    document.getElementById("login").classList.add("hidden");
+    startCountdown();
+  }else{
+    alert("غلط يا لولتي 😏");
+  }
+}
+
+// Countdown
+function startCountdown(){
+  document.getElementById("countdown").classList.remove("hidden");
+  let c = 3;
+  let interval = setInterval(()=>{
+    document.getElementById("count").innerText = c;
+    c--;
+    if(c<0){
+      clearInterval(interval);
+      document.getElementById("countdown").classList.add("hidden");
+      document.getElementById("question").classList.remove("hidden");
+    }
+  },1000);
+}
+
+// Move No Button
+function moveNo(){
+  noCount++;
+  let x = Math.random()*(window.innerWidth-100);
+  let y = Math.random()*(window.innerHeight-100);
+  let noBtn = document.getElementById("no");
+  noBtn.style.left = x+"px";
+  noBtn.style.top = y+"px";
+
+  if(noCount>=3){
+    document.getElementById("cat").classList.remove("hidden");
+  }
+}
+
+// Yes Button
+function yes(){
+  document.getElementById("question").classList.add("hidden");
+  document.getElementById("cat").classList.add("hidden");
+  document.getElementById("celebration").classList.remove("hidden");
+  addConfetti();
+}
+
+// Add Confetti & Hearts
+function addConfetti(){
+  let celebration = document.getElementById("celebration");
+  for(let i=0;i<30;i++){
+    let conf = document.createElement("div");
+    conf.className="confetti";
+    conf.innerText=["🎉","🎊","✨","💖","❤️"][Math.floor(Math.random()*5)];
+    conf.style.left=Math.random()*window.innerWidth+"px";
+    conf.style.top=Math.random()*window.innerHeight+"px";
+    celebration.appendChild(conf);
+  }
+  for(let i=0;i<20;i++){
+    let heart = document.createElement("div");
+    heart.className="heart";
+    heart.innerText="❤️";
+    heart.style.left=Math.random()*window.innerWidth+"px";
+    heart.style.top="100%";
+    celebration.appendChild(heart);
+  }
+}
+
+// Show Ramadan Page
+function showRamadan(){
+  document.getElementById("celebration").classList.add("hidden");
+  document.getElementById("ramadan").classList.remove("hidden");
+}
+
+// Open WhatsApp
+function openWhats(){
+  window.open(
+    "https://wa.me/201140384005?text=وانت%20طيب%20يا%20حبيبي%20ورمضان%20كريم%20❤️",
+    "_blank"
+  );
+}
+</script>
+
+</body>
+</html>
